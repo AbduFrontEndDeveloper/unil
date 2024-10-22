@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f4f4f4;
+        }
+        .input-container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .input-field label {
+            margin-bottom: 5px;
+        }
+        .input-field input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="input-container">
+        <h1>Input Account Details</h1>
+        <form id="accountForm">
+            <div class="input-field">
+                <label for="accountNumber">Account Number:</label>
+                <input type="text" id="accountNumber" name="accountNumber" required>
+            </div>
+
+            <div class="input-field">
+                <label for="amount">Amount ($):</label>
+                <input type="number" id="amount" name="amount" required min="0" step="0.01">
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('accountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const accountNumber = document.getElementById('accountNumber').value;
+            const amount = document.getElementById('amount').value;
+            alert(`Account Number: ${accountNumber}\nAmount: $${amount}`);
+        });
+    </script>
+
+</body>
+</html>

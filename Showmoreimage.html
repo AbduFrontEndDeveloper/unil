@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show More/Less Pictures</title>
+    <style>
+       
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: calc(33.333% - 10px);
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .show-more {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .show-more:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .gallery img {
+                width: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        <img src="images/img-7.jpg" alt="Image 1">
+        <img src="images/imag-1.png" alt="Image 2">
+        <img src="images/img-2.jpg" alt="Image 3">
+        <img src="images/img-3.jpg" alt="Image 4" class="hidden">
+        <img src="images/img-5.jpg" alt="Image 5" class="hidden">
+        <img src="images/img-6.jpg" alt="Image 6" class="hidden">
+    </div>
+    <button class="show-more" id="showMoreBtn">Show More</button>
+
+    <script>
+        const showMoreBtn = document.getElementById('showMoreBtn');
+        const hiddenImages = document.querySelectorAll('.hidden');
+
+        let isExpanded = false;
+
+        showMoreBtn.addEventListener('click', () => {
+            if (!isExpanded) {
+                hiddenImages.forEach(img => {
+                    img.classList.remove('hidden');
+                });
+                showMoreBtn.textContent = 'Show Less';
+            } else {
+                hiddenImages.forEach(img => {
+                    img.classList.add('hidden');
+                });
+                showMoreBtn.textContent = 'Show More';
+            }
+            isExpanded = !isExpanded;
+        });
+    </script>
+
+</body>
+</html>
